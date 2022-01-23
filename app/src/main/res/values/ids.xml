@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="counter" type="id" />
+    <item name="incrementer" type="id" />
+    <item name="decrementer" type="id" />
 </resources>
