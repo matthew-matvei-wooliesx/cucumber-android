@@ -9,6 +9,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.cucumberandroid.databinding.ActivityMainBinding
 
@@ -24,19 +25,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.counter.text = count.toString()
-
-        binding.incrementer.setOnClickListener {
-            count++
-            binding.counter.text = count.toString()
-        }
-
-        binding.decrementer.setOnClickListener {
-            if (count > 0) {
-                count--
-            }
-
-            binding.counter.text = count.toString()
-        }
+        binding.incrementer.setOnClickListener(this::increment)
+        binding.decrementer.setOnClickListener(this::decrement)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -53,5 +43,19 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun increment(v: View) {
+        count++
+
+        binding.counter.text = count.toString()
+    }
+
+    private fun decrement(v: View) {
+        if (count > 0) {
+            count--
+        }
+
+        binding.counter.text = count.toString()
     }
 }
